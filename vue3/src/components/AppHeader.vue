@@ -5,7 +5,7 @@
     <router-link v-for="item in list" :key="item.to" :to="item.to" class="mx-2">
       {{ item.title }}
     </router-link>
-    <button class="mx-2">Login</button>
+    <button class="mx-2" @click="$emit('open-login-modal')">Login</button>
   </nav>
 </template>
 
