@@ -7,6 +7,7 @@
           class="w-full h-full resize-none"
           :value="text"
           @input="update"
+          ref="markdownTextArea"
         ></textarea>
       </article>
       <article class="w-1/2 border bg-gray-100" v-html="markedText"></article>
@@ -29,6 +30,7 @@ export default {
   },
   mounted() {
     console.log("mounted");
+    this.$refs.markdownTextArea.focus();
   },
   beforeUnmount() {
     console.log("before unmount");
