@@ -6,7 +6,7 @@
       {{ item.title }}
     </router-link>
     <button v-if="isLoggedIn" class="mx-2" @click="logout">Logout</button>
-    <button v-else class="mx-2" @click="$emit('open-login-modal')">Login</button>
+    <button v-else class="mx-2" @click="openLogin">Login</button>
   </nav>
 </template>
 
@@ -15,8 +15,10 @@ import firebase from '@/utilities/firebase'
 
 export default {
   //props: ["isLoggedIn"],
-  props: {
-    isLoggedIn: { type: Boolean, required: true }
+  computed: {
+    isLoggedIn(){
+      return  this.$store.state.isLoggedIn
+    }
   },
   methods: {
     logout() {
@@ -27,6 +29,9 @@ export default {
         console.log(error)
         // An error happened.
       })
+    },
+    openLogin(){
+      this.$store.commit('setLoginModal', true)
     }
   },
   data() {
@@ -36,6 +41,11 @@ export default {
         { title: 'Calendar', to: '/calendar' },
         { title: 'Markdown', to: '/markdown' },
         { title: 'Slider', to: '/slider' },
+        { title: 'Calculator', to: '/calculator' },
+        { title: 'Modal', to: '/reuseable-modal' },
+        { title: 'Chat', to: '/chat' },
+        { title: 'User Crud', to: '/user-crud' },
+        { title: 'Tensorflow', to: '/tensorflow' },
       ],
     }
   },
